@@ -6,8 +6,9 @@ Keywords: ReactJS, ChakraUI, ContextAPI, reducer
 User has to find given icons from given icon list in a given difficulty level.  
 
 ### TODO & Improvements
-- [ ] Add Timer  
-- [ ] Add Levels  
+- [ ] Add game ending after Congrats text  
+- [ ] Add timer  
+- [ ] Add levels  
   
 To try it out, visit:  
 https://icongame.vercel.app/  
