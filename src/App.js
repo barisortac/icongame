@@ -7,12 +7,14 @@ import {
   SliderThumb,
   SliderTrack,
   Text,
+  Grid
 } from '@chakra-ui/react'
 import Icons from "./components/IconList";
 import iconList from "./components/IconProvider";
 import {sampleSize} from "lodash";
 import useApp from "./useApp";
 import RestartGame from "./components/RestartGame";
+import CountDownProgressBar from "./components/CountDownProgressBar";
 
 
 const App = () => {
@@ -23,7 +25,7 @@ const App = () => {
 
   const [iconChangeMilliSeconds, setIconChangeMilliSeconds] = useState(12000)
   const [numberOfSample, setNumberOfSample] = useState(4)
-  const [numberOfIcons, setNumberOfIcons] = useState(35)
+  const numberOfIcons = gameState.numberOfIcons;
 
   const _iconList = sampleSize(iconList, numberOfIcons);
 
@@ -60,9 +62,7 @@ const App = () => {
           </SliderTrack>
           <SliderThumb/>
         </Slider>
-        <Text>
-          Change Interval: {iconChangeMilliSeconds / 1000} secs
-        </Text>
+
 
         <Flex justifyContent="center" flexDirection="row"
               wrap="wrap" mr="50px" ml="50px" mt="1em"
@@ -74,6 +74,9 @@ const App = () => {
             numberOfIcons={numberOfIcons}
           />
         </Flex>
+        <Grid width="20em">
+          <CountDownProgressBar iconChangeMilliSeconds={iconChangeMilliSeconds}/>
+        </Grid>
         <Flex justifyContent="center" alignItems="center" mt="1em" flexDirection="column">
           <Text>FIND THESE ICONS</Text>
           <Flex flexDirection="row">
@@ -88,7 +91,6 @@ const App = () => {
           }
         </Flex>
       </Flex>
-
     </ChakraProvider>
   )
 }

@@ -4,7 +4,8 @@ export const gameState = {
   foundIcon: 0,
   sampleIconList: [],
   isSampleSet: false,
-  generatedIconList: []
+  generatedIconList: [],
+  numberOfIcons: 35,
 }
 
 export const INCREASE_FOUND_ICON = 'INCREASE_FOUND_ICON'

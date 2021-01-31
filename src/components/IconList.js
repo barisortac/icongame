@@ -1,12 +1,12 @@
 import {IconButton} from "@chakra-ui/react";
 import React, {useEffect, useRef, useState} from "react";
 import useApp from "../useApp";
+import useInterval from "./useInterval"
 
 
 const Icons = (
   {
     iconChangeMilliSeconds,
-    numberOfIcons,
     mainPalet = false
   }) => {
   const {
@@ -38,26 +38,6 @@ const Icons = (
     }
   }
 
-  function useInterval(callback, delay) {
-    const savedCallback = useRef();
-
-    // Remember the latest function.
-    useEffect(() => {
-      savedCallback.current = callback;
-    }, [callback]);
-
-    // Set up the interval.
-    useEffect(() => {
-      function tick() {
-        savedCallback.current();
-      }
-
-      if (delay !== null) {
-        let id = setInterval(tick, delay);
-        return () => clearInterval(id);
-      }
-    }, [delay]);
-  }
 
   useInterval(() => {
     if (mainPalet) {

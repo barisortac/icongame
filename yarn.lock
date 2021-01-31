@@ -1628,6 +1628,14 @@
     "@chakra-ui/theme-tools" "1.0.3"
     "@chakra-ui/utils" "1.1.0"
 
+"@chakra-ui/progress@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@chakra-ui/progress/-/progress-1.1.0.tgz#cabfde1186a5afbe6a1207d9c5a24b9bfd86155c"
+  integrity sha512-GXy3OSLO1jnbrp2VcPkT2+2XFPyYfxuNSleQDe6fLcIHuJIY5T8AxfW9u8/bWsEdunLoUdo2YKrovb6XtwNP8Q==
+  dependencies:
+    "@chakra-ui/theme-tools" "1.0.3"
+    "@chakra-ui/utils" "1.1.0"
+
 "@chakra-ui/radio@1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@chakra-ui/radio/-/radio-1.1.2.tgz#6e0f13d8395bb1ddbe2dda3900327905cd690ee9"
