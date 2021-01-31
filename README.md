@@ -1,4 +1,18 @@
-# Getting Started with Create React App
+# ICON GAME
+It is a hobby (POC) project for finding icons in a given difficulty level.  
+Keywords: ReactJS, ChakraUI, ContextAPI, reducer  
+
+####Game objective
+User has to find given icons from given icon list in a given difficulty level.  
+
+### TODO & Improvements
+- [ ] Add Timer  
+- [ ] Add Levels  
+
+![](icongame_demonstration.gif)
+  
+---------------------------------------------  
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
