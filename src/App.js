@@ -1,9 +1,18 @@
 import React, {useEffect, useState} from 'react'
-import {ChakraProvider, Flex, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text,} from '@chakra-ui/react'
+import {
+  ChakraProvider,
+  Flex,
+  Slider,
+  SliderFilledTrack,
+  SliderThumb,
+  SliderTrack,
+  Text,
+} from '@chakra-ui/react'
 import Icons from "./components/IconList";
 import iconList from "./components/IconProvider";
 import {sampleSize} from "lodash";
 import useApp from "./useApp";
+import RestartGame from "./components/RestartGame";
 
 
 const App = () => {
@@ -13,8 +22,9 @@ const App = () => {
   } = useApp()
 
   const [iconChangeMilliSeconds, setIconChangeMilliSeconds] = useState(12000)
-  const [numberOfSample, setNumberOfSample] = useState(2)
-  const [numberOfIcons, setNumberOfIcons] = useState(48)
+  const [numberOfSample, setNumberOfSample] = useState(4)
+  const [numberOfIcons, setNumberOfIcons] = useState(35)
+
   const _iconList = sampleSize(iconList, numberOfIcons);
 
   let sample;
@@ -70,7 +80,10 @@ const App = () => {
           </Flex>
           <Text>FOUND: {gameState.foundIcon}</Text>
           {gameState.foundIcon === numberOfSample &&
-          <Text fontWeight="bold" color="green.500" fontSize="4xl">CONGRATS!</Text>
+          <>
+            <Text fontWeight="bold" color="green.500" fontSize="4xl">CONGRATS!</Text>
+            <RestartGame/>
+          </>
           }
         </Flex>
       </Flex>
