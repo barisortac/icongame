@@ -8,8 +8,10 @@ User has to find given icons from given icon list in a given difficulty level.
 ### TODO & Improvements
 - [ ] Add Timer  
 - [ ] Add Levels  
-
-![](icongame_demonstration.gif)
+  
+To try it out, visit:  
+https://icongame.vercel.app/  
+![](icongame_demonstration.gif)  
   
 ---------------------------------------------  
 ## Getting Started with Create React App
