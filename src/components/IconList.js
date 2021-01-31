@@ -1,7 +1,6 @@
 import {IconButton} from "@chakra-ui/react";
-import React, {useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import useApp from "../useApp";
-import {sampleSize} from "lodash";
 
 
 const Icons = (
@@ -17,6 +16,7 @@ const Icons = (
 
   const iconList = gameState.generatedIconList;
   const sampleIconList = gameState.sampleIconList;
+  const [greenIconList, setGreenIconList] = useState([])
 
   let showIconList;
 
@@ -26,10 +26,7 @@ const Icons = (
     showIconList = sampleIconList;
   }
 
-  const [greenIconList, setGreenIconList] = useState([])
-
   let sampleIdList = (sampleIconList && sampleIconList.map(i => i.id)) || [];
-
   const handleClick = (e) => {
     if (mainPalet) {
       const selectedIconId = parseInt(e.target.id || e.target.ownerSVGElement.id)
@@ -41,14 +38,33 @@ const Icons = (
     }
   }
 
-  const changeIconList = () => {
-    let newSample = sampleSize(showIconList, numberOfIcons);
-    gameActions.setGeneratedIconList(newSample);
-  };
+  function useInterval(callback, delay) {
+    const savedCallback = useRef();
 
-  if (mainPalet) {
-    setTimeout(() => changeIconList(), iconChangeMilliSeconds);
+    // Remember the latest function.
+    useEffect(() => {
+      savedCallback.current = callback;
+    }, [callback]);
+
+    // Set up the interval.
+    useEffect(() => {
+      function tick() {
+        savedCallback.current();
+      }
+
+      if (delay !== null) {
+        let id = setInterval(tick, delay);
+        return () => clearInterval(id);
+      }
+    }, [delay]);
   }
+
+  useInterval(() => {
+    if (mainPalet) {
+      gameActions.shuffleIcons();
+    }
+  }, iconChangeMilliSeconds);
+
 
   return (
     <>

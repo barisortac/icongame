@@ -46,7 +46,8 @@ const App = () => {
     <ChakraProvider resetCSS>
       <Flex justifyContent="center" alignItems="center" mt="3em" flexDirection="column">
         <Text fontWeight="bold">ICON GAME</Text>
-        <Text>Difficulty Level</Text>
+        <Text fontWeight="bold" color="pink.400" fontSize="xs">Barış Ortaç</Text>
+        <Text mt="1em" >Difficulty Level</Text>
         <Slider
           aria-label="slider-ex-2" size="lg" step="25" colorScheme="pink" maxW="20em"
           defaultValue={0}
