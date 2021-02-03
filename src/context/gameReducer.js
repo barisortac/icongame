@@ -21,22 +21,18 @@ export const gameReducer = (state, action) => {
         foundIcon: state.foundIcon + 1
       };
     case SET_SAMPLE_ICONS:
-      console.log("state")
-      console.log(state)
       return {
         ...state,
         isSampleSet: true,
         sampleIconList: action.data || []
       }
     case SET_ICON_LIST:
-      console.log("state")
-      console.log(state)
       return {
         ...state,
         generatedIconList: action.data || []
       }
     case SHUFFLE_ICONS:
-      let newSample = sampleSize(state.generatedIconList, 36);
+      let newSample = sampleSize(state.generatedIconList, state.numberOfIcons);
       return {
         ...state,
         generatedIconList: newSample || []

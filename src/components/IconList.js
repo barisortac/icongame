@@ -1,13 +1,16 @@
-import {IconButton} from "@chakra-ui/react";
-import React, {useEffect, useRef, useState} from "react";
+import {Grid, IconButton} from "@chakra-ui/react";
+import React, {useEffect, useState} from "react";
 import useApp from "../useApp";
 import useInterval from "./useInterval"
+import CountDownProgressBar from "./CountDownProgressBar";
 
 
 const Icons = (
   {
     iconChangeMilliSeconds,
-    mainPalet = false
+    mainPalet = false,
+    doColorIcon = null,
+    colorIconList = null,
   }) => {
   const {
     state: {gameState},
@@ -16,7 +19,8 @@ const Icons = (
 
   const iconList = gameState.generatedIconList;
   const sampleIconList = gameState.sampleIconList;
-  const [greenIconList, setGreenIconList] = useState([])
+
+  const [cDown, setCDown] = useState(iconChangeMilliSeconds)
 
   let showIconList;
 
@@ -30,29 +34,34 @@ const Icons = (
   const handleClick = (e) => {
     if (mainPalet) {
       const selectedIconId = parseInt(e.target.id || e.target.ownerSVGElement.id)
-      if (sampleIdList && sampleIdList.includes(selectedIconId)) {
+      if (sampleIdList && sampleIdList.includes(selectedIconId) && !colorIconList[selectedIconId]) {
         gameActions.incrementFoundItem()
-        let newState = [...greenIconList, selectedIconId]
-        setGreenIconList(newState);
+        doColorIcon({selectedIconId})
       }
     }
   }
 
+  useEffect(() => {
+      setCDown(iconChangeMilliSeconds)
+    }, [iconChangeMilliSeconds]
+  )
 
   useInterval(() => {
-    if (mainPalet) {
+    setCDown((cDown) => (cDown - 1000))
+    if (cDown <= 0 && mainPalet) {
       gameActions.shuffleIcons();
+      setCDown(iconChangeMilliSeconds);
     }
-  }, iconChangeMilliSeconds);
-
+  }, 1000);
 
   return (
     <>
       {showIconList.length &&
       showIconList.map((i, key) => (
         <IconButton
+          as="span"
           aria-label="icon"
-          colorScheme={mainPalet && greenIconList.includes(i['id']) ? "green" : "gray"}
+          colorScheme={mainPalet && colorIconList[i['id']] ? colorIconList[i['id']] : "gray"}
           key={key}
           id={i['id']}
           icon={
@@ -66,6 +75,12 @@ const Icons = (
           onClick={handleClick}
         />
       ))
+      }
+      {
+        mainPalet &&
+        <Grid width="20em">
+          <CountDownProgressBar cDown={cDown} iconChangeMilliSeconds={iconChangeMilliSeconds}/>
+        </Grid>
       }
     </>
   )

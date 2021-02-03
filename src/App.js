@@ -1,21 +1,16 @@
 import React, {useEffect, useState} from 'react'
-import {
-  ChakraProvider,
-  Flex,
-  Slider,
-  SliderFilledTrack,
-  SliderThumb,
-  SliderTrack,
-  Text,
-  Grid
-} from '@chakra-ui/react'
+import {ChakraProvider, Flex, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text,} from '@chakra-ui/react'
 import Icons from "./components/IconList";
 import iconList from "./components/IconProvider";
 import {sampleSize} from "lodash";
 import useApp from "./useApp";
 import RestartGame from "./components/RestartGame";
-import CountDownProgressBar from "./components/CountDownProgressBar";
 
+let colorIconList = {}
+const initialColor = sampleSize([
+  "red", "green", "orange", "pink", "yellow", "teal", "blue", "cyan",
+  "purple", "pink", "linkedin", "facebook"
+], 4)
 
 const App = () => {
   const {
@@ -26,8 +21,11 @@ const App = () => {
   const [iconChangeMilliSeconds, setIconChangeMilliSeconds] = useState(12000)
   const [numberOfSample, setNumberOfSample] = useState(4)
   const numberOfIcons = gameState.numberOfIcons;
-
   const _iconList = sampleSize(iconList, numberOfIcons);
+
+  const doColorIcon = ({selectedIconId}) => {
+    colorIconList[selectedIconId] = initialColor.pop()
+  }
 
   let sample;
   let sampleIdList;
@@ -46,21 +44,21 @@ const App = () => {
 
   return (
     <ChakraProvider resetCSS>
-      <Flex justifyContent="center" alignItems="center" mt="3em" flexDirection="column">
+      <Flex justifyContent="center" alignItems="center" mt="1em" flexDirection="column">
         <Text fontWeight="bold">ICON GAME</Text>
         <Text fontWeight="bold" color="pink.400" fontSize="xs">Barış Ortaç</Text>
         <Text mt="1em" >Difficulty Level</Text>
         <Slider
-          aria-label="slider-ex-2" size="lg" step="25" colorScheme="pink" maxW="20em"
+          aria-label="slider-ex-2" size="lg" step="20" colorScheme="pink" maxW="20em"
           defaultValue={0}
           onChangeEnd={(val) => {
-            setIconChangeMilliSeconds((120 - parseInt(val)) * 100)
+            setIconChangeMilliSeconds((100 - parseInt(val)) * 100)
           }}
         >
           <SliderTrack bg="red.100">
             <SliderFilledTrack bg="tomato"/>
           </SliderTrack>
-          <SliderThumb/>
+          <SliderThumb bg="pink.200"/>
         </Slider>
 
 
@@ -72,11 +70,10 @@ const App = () => {
             mainPalet={true}
             iconChangeMilliSeconds={iconChangeMilliSeconds}
             numberOfIcons={numberOfIcons}
+            doColorIcon={doColorIcon}
+            colorIconList={colorIconList}
           />
         </Flex>
-        <Grid width="20em">
-          <CountDownProgressBar iconChangeMilliSeconds={iconChangeMilliSeconds}/>
-        </Grid>
         <Flex justifyContent="center" alignItems="center" mt="1em" flexDirection="column">
           <Text>FIND THESE ICONS</Text>
           <Flex flexDirection="row">
