@@ -5,6 +5,7 @@ import iconList from "./components/IconProvider";
 import {sampleSize} from "lodash";
 import useApp from "./useApp";
 import RestartGame from "./components/RestartGame";
+import {Divider} from "@chakra-ui/layout";
 
 let colorIconList = {}
 const initialColor = sampleSize([
@@ -47,6 +48,7 @@ const App = () => {
       <Flex justifyContent="center" alignItems="center" mt="1em" flexDirection="column">
         <Text fontWeight="bold">ICON GAME</Text>
         <Text fontWeight="bold" color="pink.400" fontSize="xs">Barış Ortaç</Text>
+        <Divider />
         <Text mt="1em" >Difficulty Level</Text>
         <Slider
           aria-label="slider-ex-2" size="lg" step="20" colorScheme="pink" maxW="20em"
