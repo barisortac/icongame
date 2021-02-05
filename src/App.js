@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react'
 import {ChakraProvider, Flex, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text,} from '@chakra-ui/react'
 import Icons from "./components/IconList";
 import iconList from "./components/IconProvider";
-import {sampleSize} from "lodash";
+import {sampleSize, sample} from "lodash";
 import useApp from "./useApp";
 import RestartGame from "./components/RestartGame";
 import {Divider} from "@chakra-ui/layout";
 import Lottie from 'react-lottie';
 import animationData from './lotties/lottie.json';
+import animationData2 from './lotties/lottie_2.json';
+import animationData3 from './lotties/lottie_3.json';
 
 let colorIconList = {}
 const initialColor = sampleSize([
@@ -15,16 +17,19 @@ const initialColor = sampleSize([
   "purple", "pink", "linkedin", "facebook"
 ], 4)
 
+const selectedAnimation = sample([animationData, animationData2, animationData3])
+
 const App = () => {
   const {
     state: {gameState},
     actions: {gameActions},
   } = useApp()
 
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
-    animationData: animationData,
+    animationData: selectedAnimation,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
     }
