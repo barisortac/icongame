@@ -9,7 +9,7 @@ const RestartGame = ({}) => {
     actions: {gameActions},
   } = useApp()
 
-  const [gameRestartMilliSeconds, setGameRestartMilliSeconds] = useState(4000)
+  const [gameRestartMilliSeconds, setGameRestartMilliSeconds] = useState(5000)
   const calculateTimeLeft = () => {
     if (gameRestartMilliSeconds - 1000 === 0) {
       clearTimeout(timer)
