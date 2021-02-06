@@ -64,10 +64,10 @@ const App = () => {
       <Flex justifyContent="center" alignItems="center" mt="1em" flexDirection="column">
         <Text fontWeight="bold">ICON GAME</Text>
         <Text fontWeight="bold" color="pink.400" fontSize="xs">Barış Ortaç</Text>
-        <Divider maxW="20em"/>
+        <Divider maxW="18em"/>
         <Text mt="1em" >Difficulty Level</Text>
         <Slider
-          aria-label="slider-ex-2" size="lg" step="20" colorScheme="pink" maxW="20em"
+          aria-label="slider-ex-2" size="lg" step="20" colorScheme="pink" maxW="18em"
           defaultValue={0}
           onChangeEnd={(val) => {
             setIconChangeMilliSeconds((100 - parseInt(val)) * 100)
@@ -82,7 +82,7 @@ const App = () => {
 
         <Flex justifyContent="center" flexDirection="row"
               wrap="wrap" mr="50px" ml="50px" mt="1em"
-              border="1px" borderColor="gray.600" maxW="20em"
+              border="1px" borderColor="gray.600" maxW="18em"
         >
           { gameState.foundIcon === numberOfSample
             ?
