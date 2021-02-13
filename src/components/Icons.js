@@ -48,6 +48,9 @@ const Icons = (
 
   useInterval(() => {
     setCDown((cDown) => (cDown - 1000))
+    if (typeof iconChangeMilliSeconds === 'number') {
+      gameActions.addGameSummary(iconChangeMilliSeconds + 100)
+    }
     if (cDown <= 0 && mainPalet) {
       gameActions.shuffleIcons();
       setCDown(iconChangeMilliSeconds);
@@ -61,7 +64,7 @@ const Icons = (
         <IconButton
           as="span"
           aria-label="icon"
-          colorScheme={mainPalet && colorIconList[i['id']] ? colorIconList[i['id']] : "gray"}
+          colorScheme={colorIconList[i['id']] ? colorIconList[i['id']] : "gray"}
           key={key}
           id={i['id']}
           icon={

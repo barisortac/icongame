@@ -6,12 +6,14 @@ export const gameState = {
   isSampleSet: false,
   generatedIconList: [],
   numberOfIcons: 35,
+  gameSummary: [],
 }
 
 export const INCREASE_FOUND_ICON = 'INCREASE_FOUND_ICON'
 export const SET_SAMPLE_ICONS = 'SET_SAMPLE_ICONS'
 export const SET_ICON_LIST = 'SET_ICON_LIST'
 export const SHUFFLE_ICONS = 'SHUFFLE_ICONS'
+export const ADD_GAME_SUMMARY = 'ADD_GAME_SUMMARY'
 
 export const gameReducer = (state, action) => {
   switch (action.type) {
@@ -37,6 +39,11 @@ export const gameReducer = (state, action) => {
         ...state,
         generatedIconList: newSample || []
       }
+    case ADD_GAME_SUMMARY:
+      return {
+        ...state,
+        gameSummary: [...state.gameSummary, action.data]
+      }
     default:
       return state;
   }
@@ -48,5 +55,6 @@ export const gameActions = (props) => {
     setSampleIcons: (data) => props.dispatch({ type: SET_SAMPLE_ICONS, data}),
     setGeneratedIconList: (data) => props.dispatch({ type: SET_ICON_LIST, data}),
     shuffleIcons: (data) => props.dispatch({ type: SHUFFLE_ICONS, data}),
+    addGameSummary: (data) => props.dispatch({ type: ADD_GAME_SUMMARY, data}),
   }
 }
