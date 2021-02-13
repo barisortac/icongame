@@ -1,5 +1,5 @@
-import {Grid, IconButton} from "@chakra-ui/react";
-import React, {useEffect, useState} from "react";
+import {Grid, IconButton, Input} from "@chakra-ui/react";
+import React, {useEffect, useRef, useState} from "react";
 import useApp from "../useApp";
 import useInterval from "./useInterval"
 import CountDownProgressBar from "./CountDownProgressBar";
@@ -7,7 +7,6 @@ import CountDownProgressBar from "./CountDownProgressBar";
 
 const Icons = (
   {
-    iconChangeMilliSeconds,
     mainPalet = false,
     doColorIcon = null,
     colorIconList = null,
@@ -19,7 +18,7 @@ const Icons = (
 
   const iconList = gameState.generatedIconList;
   const sampleIconList = gameState.sampleIconList;
-
+  const iconChangeMilliSeconds = gameState.iconChangeMilliSeconds;
   const [cDown, setCDown] = useState(iconChangeMilliSeconds)
 
   let showIconList;
@@ -35,7 +34,7 @@ const Icons = (
     if (mainPalet) {
       const selectedIconId = parseInt(e.target.id || e.target.ownerSVGElement.id)
       if (sampleIdList && sampleIdList.includes(selectedIconId) && !colorIconList[selectedIconId]) {
-        gameActions.incrementFoundItem()
+        gameActions.increaseFoundItem()
         doColorIcon({selectedIconId})
       }
     }
@@ -48,9 +47,6 @@ const Icons = (
 
   useInterval(() => {
     setCDown((cDown) => (cDown - 1000))
-    if (typeof iconChangeMilliSeconds === 'number') {
-      gameActions.addGameSummary(iconChangeMilliSeconds + 100)
-    }
     if (cDown <= 0 && mainPalet) {
       gameActions.shuffleIcons();
       setCDown(iconChangeMilliSeconds);

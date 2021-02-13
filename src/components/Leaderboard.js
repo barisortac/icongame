@@ -1,8 +1,7 @@
 import {fetchLeaderboard, insertLeaderboard} from "../services/coreApis";
 import React, {useEffect, useState} from "react";
-import {Tag, Flex, Text} from "@chakra-ui/react";
+import {Flex, Tag, Text} from "@chakra-ui/react";
 import {getLocalStorageName} from "../utils/localStorageNameFunctions";
-import {sum} from "lodash";
 import useApp from "../useApp";
 import {Spinner} from "@chakra-ui/spinner";
 
@@ -18,9 +17,6 @@ const Leaderboard = () => {
   const getLeaderboard = () => {
     fetchLeaderboard()
       .then((response) => {
-        console.log("GET LEADERBOARD CEVAP");
-        console.log(response);
-        console.log(JSON.stringify(leaderboard));
         setLeaderboard(response.data.leaderboard);
       })
       .catch((error) => {
@@ -31,21 +27,29 @@ const Leaderboard = () => {
 
   let payload;
   let name;
+  let score;
+
   const addLeaderboard = () => {
     name = getLocalStorageName()
-    payload = {name: name, score: sum(gameState.gameSummary)}
+    score = (
+      (gameState.sampleIconNumber * parseInt(gameState.difficultyLevel) * 1000)
+      / ((Date.now() - gameState.startTimestamp))
+    ) * 1000
+    score = parseFloat(score.toFixed(2))
+    payload = {name: name, score: score}
     insertLeaderboard({data: payload})
       .then((response) => {
         setIdOnLeaderboard(response.data?.addResult?.insertedId)
       }).then(getLeaderboard)
       .catch((error) => {
-        console.log("add leaderboardda hata");
+        console.log("error on leaderboard");
         console.log(error);
       });
   };
 
   useEffect(() => {
     addLeaderboard();
+    //game is ended, calculate game point
   }, []);
 
   return (
@@ -54,23 +58,23 @@ const Leaderboard = () => {
       {
         leaderboard.length
           ?
-            leaderboard.map((item, idx) => (
-              <Tag
-                backgroundColor={item._id === idOnLeaderboard ? "green.300" : "teal.200"}
-                width="17em"
-                display="flex"
-                color="facebook.600"
-                p="5px"
-                m="2px"
-              >
-                {idx + 1} - {item.name} - {item.score}
-              </Tag>
-            ))
+          leaderboard.map((item, idx) => (
+            <Tag
+              backgroundColor={item._id === idOnLeaderboard ? "green.300" : "teal.200"}
+              width="17em"
+              display="flex"
+              color="facebook.600"
+              p="5px"
+              m="2px"
+            >
+              {idx + 1} - {item.name} - {item.score}
+            </Tag>
+          ))
           :
-            <>
-              <Spinner color="red.500" />
-              <Text>Loading..</Text>
-            </>
+          <>
+            <Spinner color="red.500"/>
+            <Text>Loading..</Text>
+          </>
       }
     </Flex>
   )

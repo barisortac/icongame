@@ -23,7 +23,7 @@ import {Divider} from "@chakra-ui/layout";
 const App = () => {
   return (
     <ChakraProvider resetCSS>
-      <Flex justifyContent="center" alignItems="center" mt="1em" flexDirection="column">
+      <Flex justifyContent="center" alignItems="center" mt="1em" mr="5em" ml="5em" flexDirection="column">
         <Text fontWeight="bold">ICON GAME</Text>
         <Text fontWeight="bold" color="pink.400" fontSize="xs">Barış Ortaç</Text>
         <Divider maxW="18em"/>
