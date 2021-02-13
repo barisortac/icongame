@@ -27,8 +27,8 @@ const Info = () => {
         <Text>
           Yep. I published repos for both backend & frontend. Here are links:
         </Text>
-        <Link>https://github.com/barisortac/icongame</Link>
-        <Link>https://github.com/barisortac/icongameserver</Link>
+        <Link href="https://github.com/barisortac/icongame">https://github.com/barisortac/icongame</Link>
+        <Link href="https://github.com/barisortac/icongameserver">https://github.com/barisortac/icongameserver</Link>
       </Flex>
     </Flex>
   )
