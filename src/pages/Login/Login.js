@@ -43,7 +43,7 @@ const Login = () => {
   return (
     <Flex flexDirection="column" justifyContent="center" alignItems="center" mt="2em">
       <Text fontWeight="bold">Pick a Difficulty Level</Text>
-      <Text fontSize="sm">(Hover onto texts to see difficulty info)</Text>
+      <Text fontSize="sm">(Hover (or click for mobile) onto texts to see difficulty info)</Text>
       <Flex justifyContent="space-between">
         <RadioGroup onChange={setDifficulty} defaultValue="1" value={difficulty} mt="1em">
           <Stack direction="row">
