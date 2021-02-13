@@ -5,7 +5,7 @@ import {Divider} from "@chakra-ui/layout";
 const Info = () => {
   return (
     <Flex>
-      <Flex flexDirection="column" mt="4em" ml="400px" mr="400px" fontSize="l">
+      <Flex flexDirection="column" mt="4em" fontSize="l">
         <Divider mt="1em" mb="1em"/>
         <Text fontWeight="bold" display="block">
           What is this?
