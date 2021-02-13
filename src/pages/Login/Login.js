@@ -70,7 +70,7 @@ const Login = () => {
           </Stack>
         </RadioGroup>
       </Flex>
-      <InputGroup maxWidth="30em" mt="2em">
+      <InputGroup maxWidth="20em" mt="2em">
         {name}
         <Input
           display="flex"
@@ -82,7 +82,7 @@ const Login = () => {
           boxShadow="3em"
           fontWeight="bold"
           textAlign="center"
-          maxWidth="30em"
+          maxWidth="20em"
           color="blackAlpha.900"
           onChange={e => setName(e.target.value)}
           value={name}
