@@ -12,20 +12,20 @@ const Info = () => {
         </Text>
         <Text>
           It is a proof-of-concept game that includes React, ChakraUI, MongoDB,
-          Express, ContextAPI, Reducer and Vercel for the deployment.
+          Express, ContextAPI, Reducer, and Vercel for the deployment.
         </Text>
         <Text fontWeight="bold">
           What is the objective?
         </Text>
         <Text>
-          Find sampled icons in the icon pool. You will get score according to
+          Find sampled icons in the icon pool. You will get a score according to
           your finish time & difficulty level.
         </Text>
         <Text fontWeight="bold">
           Can I see your code?
         </Text>
         <Text>
-          Yep. I published repos for both backend & frontend. Here are links:
+          Yep. I published the repositories for both backend & frontend. Here are the links:
         </Text>
         <Link href="https://github.com/barisortac/icongame">https://github.com/barisortac/icongame</Link>
         <Link href="https://github.com/barisortac/icongameserver">https://github.com/barisortac/icongameserver</Link>
