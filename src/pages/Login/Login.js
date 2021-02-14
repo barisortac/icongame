@@ -54,7 +54,7 @@ const Login = () => {
             </Radio>
             <Radio value="2">
               <Tooltip label="8 secs | 5 icons" fontSize="md">
-                Second
+                Normal
               </Tooltip>
             </Radio>
             <Radio value="3">
