@@ -59,7 +59,7 @@ const Leaderboard = () => {
         leaderboard.length
           ?
           leaderboard.map((item, idx) => (
-            item.name && item.score &&
+            (item.name && item.score) &&
             <Tag
               backgroundColor={item._id === idOnLeaderboard ? "green.300" : "teal.200"}
               width="17em"
@@ -70,6 +70,7 @@ const Leaderboard = () => {
             >
               {idx + 1} - {item.name} - {item.score}
             </Tag>
+            || ''
           ))
           :
           <>
