@@ -11,8 +11,8 @@ const Info = () => {
           What is this?
         </Text>
         <Text>
-          It is a proof-of-concept game that includes React, ChakraUI, MongoDB,
-          Express, ContextAPI, Reducer, and Vercel for the deployment.
+          It is a proof-of-concept game that includes <b>React, ChakraUI, MongoDB,
+          Express, ContextAPI, Reducer, and Vercel</b> for the deployment.
         </Text>
         <Text fontWeight="bold">
           What is the objective?
