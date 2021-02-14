@@ -55,8 +55,9 @@ const Game = () => {
         }
       }
 
+      gameActions.setStartTimestamp(Date.now())
+
       return () => {
-        gameActions.setStartTimestamp(Date.now())
         gameActions.resetFoundItem()
         gameActions.resetSampleIcons()
         colorIconList = {}
