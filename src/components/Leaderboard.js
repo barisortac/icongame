@@ -70,7 +70,7 @@ const Leaderboard = () => {
           leaderboard.map((item, idx) => (
             (item.name && item.score) &&
             <Tag
-              backgroundColor={item._id === idOnLeaderboard ? "green.300" : "teal.200"}
+              backgroundColor={item._id === idOnLeaderboard ? "pink.300" : "teal.200"}
               width="17em"
               display="flex"
               color="facebook.600"
