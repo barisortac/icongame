@@ -1,5 +1,5 @@
 import {fetchLeaderboard, insertLeaderboard} from "../services/coreApis";
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Flex, Tag, Text} from "@chakra-ui/react";
 import {getLocalStorageName} from "../utils/localStorageNameFunctions";
 import useApp from "../useApp";
@@ -13,6 +13,7 @@ const Leaderboard = () => {
 
   const [leaderboard, setLeaderboard] = useState([]);
   const [idOnLeaderboard, setIdOnLeaderboard] = useState('');
+  const scrollToLeaderboardRef = useRef(null)
 
   const getLeaderboard = () => {
     fetchLeaderboard()
@@ -52,6 +53,12 @@ const Leaderboard = () => {
     //game is ended, calculate game point
   }, []);
 
+  useEffect(() => {
+    if (leaderboard.length) {
+      scrollToLeaderboardRef.current.scrollIntoView();
+    }
+  }, [leaderboard.length])
+
   return (
     <Flex justifyContent="center" alignItems="center" flexDirection="column">
       <Text fontWeight="bold">Leaderboard</Text>
@@ -67,6 +74,7 @@ const Leaderboard = () => {
               color="facebook.600"
               p="5px"
               m="2px"
+              ref={item._id === idOnLeaderboard ? scrollToLeaderboardRef : null}
             >
               {idx + 1} - {item.name} - {item.score}
             </Tag>
