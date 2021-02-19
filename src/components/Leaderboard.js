@@ -56,7 +56,7 @@ const Leaderboard = () => {
   useEffect(() => {
     if (leaderboard.length && scrollToLeaderboardRef.current) {
       setTimeout(() => {
-        scrollToLeaderboardRef.current.scrollIntoView({behavior: 'smooth'});
+        scrollToLeaderboardRef.current.scrollIntoView({behavior: 'smooth', block: 'center'});
       }, 1000)
     }
   }, [leaderboard.length])
