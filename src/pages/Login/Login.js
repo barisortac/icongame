@@ -22,6 +22,14 @@ const Login = () => {
       alert("Name cannot be blank!");
       return;
     }
+
+    var bannedNames = ["bahadır", "bahadir", "hileci", "cheat", "cheater"]
+
+    if (bannedNames.includes(name.toLowerCase())) {
+      alert("Cheaters are not allowed! Please be a different person.");
+      return;
+    }
+
     setLocalStorageName(name);
     gameActions.setDifficultyLevel(difficulty)
     history.push('/game')
