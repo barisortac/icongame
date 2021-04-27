@@ -67,8 +67,8 @@ const Leaderboard = () => {
       {
         leaderboard.length
           ?
-          leaderboard.map((item, idx) => (
-            (item.name && item.score && parseFloat(item.score) < 5000) &&
+          leaderboard.filter(i => i.score < 5000).map((item, idx) => (
+            (item.name && item.score) &&
             <Tag
               backgroundColor={item._id === idOnLeaderboard ? "pink.200" : "teal.200"}
               width="17em"
