@@ -25,7 +25,7 @@ const App = () => {
     <ChakraProvider resetCSS>
       <Flex justifyContent="center" alignItems="center" mt="1em" mr="5em" ml="5em" flexDirection="column">
         <Text fontWeight="bold">ICON GAME</Text>
-        <Text fontWeight="bold" color="pink.400" fontSize="xs">Barış Ortaç</Text>
+        <Text fontWeight="bold" color="pink.400" fontSize="xs">Kadir Barış Ortaç</Text>
         <Divider maxW="18em"/>
         <Router>
           <Switch>
