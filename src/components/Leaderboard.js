@@ -79,7 +79,7 @@ const Leaderboard = () => {
               m="2px"
               ref={item._id === idOnLeaderboard ? scrollToLeaderboardRef : null}
             >
-              {idx + 1} - {item.name} - {item.score} {item.created_at ? "- " + item.created_at}
+              {idx + 1} - {item.name} - {item.score} {item.created_at ? "- " + item.created_at: ""}
             </Tag>
             || ''
           ))
