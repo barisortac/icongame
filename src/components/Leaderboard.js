@@ -18,6 +18,7 @@ const Leaderboard = () => {
   const getLeaderboard = () => {
     fetchLeaderboard()
       .then((response) => {
+        console.log(response.data.leaderboard);
         setLeaderboard(response.data.leaderboard);
       })
       .catch((error) => {
