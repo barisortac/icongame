@@ -23,7 +23,7 @@ const Login = () => {
       return;
     }
 
-    var bannedNames = ["bahadır", "bahadir", "hileci", "cheat", "cheater"]
+    var bannedNames = ["bahadır", "bahadir", "hileci", "cheat", "cheater", "yagmur"]
 
     if (bannedNames.includes(name.toLowerCase())) {
       alert("Cheaters are not allowed! Please be a different person.");
