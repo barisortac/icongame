@@ -19,14 +19,14 @@ const Login = () => {
 
   const handleClick = () => {
     if (!name) {
-      alert("Name cannot be blank!");
+      alert("İsim alanı boş bırakılamaz!");
       return;
     }
 
     var bannedNames = ["bahadır", "bahadir", "hileci", "cheat", "cheater", "yagmur"]
 
     if (bannedNames.includes(name.toLowerCase())) {
-      alert("Cheaters are not allowed! Please be a different person.");
+      alert("Hilecilere izin verilmiyor! Lütfen farklı bir isim girin.");
       return;
     }
 
@@ -49,66 +49,69 @@ const Login = () => {
   }, [])
 
   return (
-    <Flex flexDirection="column" justifyContent="center" alignItems="center" mt="2em">
-      <Text fontWeight="bold">Pick a Difficulty Level</Text>
-      <Text fontSize="sm">(Hover (or click for mobile) onto texts to see difficulty info)</Text>
+    <Flex flexDirection="column" justifyContent="center" alignItems="center" mt="2em" color="white">
+      <Text fontWeight="bold" fontSize="lg">Bir Zorluk Seviyesi Seçin</Text>
+      <Text fontSize="xs" color="blue.200" mb="1em">(Zorluk detaylarını görmek için yazıların üzerine gelin)</Text>
       <Flex justifyContent="space-between">
         <RadioGroup onChange={setDifficulty} defaultValue="1" value={difficulty} mt="1em">
-          <Stack direction="row">
-            <Radio value="1">
-              <Tooltip label="10 secs | 4 icons" fontSize="md">
-                Easy
+          <Stack direction="row" spacing="4">
+            <Radio value="1" colorScheme="pink">
+              <Tooltip label="9 emoji (3x3) | 2 hedef | 20 sn karıştırma" fontSize="md">
+                Kolay
               </Tooltip>
             </Radio>
-            <Radio value="2">
-              <Tooltip label="8 secs | 5 icons" fontSize="md">
+            <Radio value="2" colorScheme="pink">
+              <Tooltip label="16 emoji (4x4) | 3 hedef | 15 sn karıştırma" fontSize="md">
                 Normal
               </Tooltip>
             </Radio>
-            <Radio value="3">
-              <Tooltip label="4 secs | 6 icons" fontSize="md">
-                Hard
+            <Radio value="3" colorScheme="pink">
+              <Tooltip label="25 emoji (5x5) | 4 hedef | 10 sn karıştırma" fontSize="md">
+                Zor
               </Tooltip>
             </Radio>
-            <Radio value="4">
-              <Tooltip label="2 secs | 8 icons" fontSize="md">
-                Impossible
+            <Radio value="4" colorScheme="pink">
+              <Tooltip label="36 emoji (6x6) | 5 hedef | 8 sn karıştırma" fontSize="md">
+                İmkansız
               </Tooltip>
             </Radio>
           </Stack>
         </RadioGroup>
       </Flex>
       <InputGroup maxWidth="20em" mt="2em">
-        {name}
         <Input
           display="flex"
-          placeholder="Please enter your name..."
+          placeholder="Lütfen adınızı girin..."
           variant="filled"
           size="md"
           border="2px"
-          opacity={1}
-          boxShadow="3em"
+          borderColor="blue.300"
+          bg="blue.800"
+          _hover={{ bg: "blue.700" }}
+          _focus={{ bg: "blue.700", borderColor: "pink.400" }}
           fontWeight="bold"
           textAlign="center"
           maxWidth="20em"
-          color="blackAlpha.900"
+          color="white"
           onChange={e => setName(e.target.value)}
           value={name}
           onKeyDown={(e) => handleEnter(e)}
         />
         <Button
-          variant="ghost"
+          variant="solid"
           size="md"
           border="2px"
+          borderColor="whatsapp.600"
           display="flex"
           textAlign="center"
           fontWeight="bold"
           backgroundColor="whatsapp.500"
-          color="whiteAlpha.900"
+          color="white"
+          _hover={{ backgroundColor: "whatsapp.600" }}
           onClick={handleClick}
           ref={submitRef}
         >
-          Proceed
+          Başla
         </Button>
       </InputGroup>
       <Info/>

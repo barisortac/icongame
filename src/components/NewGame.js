@@ -19,17 +19,19 @@ const NewGame = () => {
   return (
     <>
         <Button
-          variant="ghost"
+          variant="solid"
           size="md"
           border="2px"
+          borderColor="whatsapp.600"
           display="flex"
           textAlign="center"
           fontWeight="bold"
           backgroundColor="whatsapp.500"
-          color="whiteAlpha.900"
+          color="white"
+          _hover={{ backgroundColor: "whatsapp.600" }}
           onClick={handleClick}
         >
-          Try again?
+          Tekrar Dene?
         </Button>
     </>
   )

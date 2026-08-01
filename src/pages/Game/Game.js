@@ -2,18 +2,16 @@ import React, {useEffect, useState} from 'react'
 import {Flex, Text,} from '@chakra-ui/react'
 import Icons from "../../components/Icons";
 import iconList from "../../components/IconProvider";
-import {sample, sampleSize} from "lodash";
+import {sampleSize} from "lodash";
 import useApp from "../../useApp";
 import Lottie from 'react-lottie';
-import animationData from '../../lotties/lottie.json';
-import animationData2 from '../../lotties/lottie_2.json';
-import animationData3 from '../../lotties/lottie_3.json';
+import squeezeBunnyAnimation from '../../lotties/Squeeze bunny _(.json';
 import Leaderboard from "../../components/Leaderboard";
 import NewGame from "../../components/NewGame";
 
 let colorIconList = {}
 
-const selectedAnimation = sample([animationData, animationData2, animationData3])
+const selectedAnimation = squeezeBunnyAnimation;
 
 const Game = () => {
   const {
@@ -68,8 +66,7 @@ const Game = () => {
   return (
     <>
       <Flex justifyContent="center" flexDirection="row"
-            wrap="wrap" mr="50px" ml="50px" mt="1em"
-            border="1px" borderColor="gray.600" maxW="18em"
+            wrap="wrap" mt=".25em" maxW="22em"
       >
         {gameState.foundIcon === sampleIconNumber
           ?
@@ -87,11 +84,11 @@ const Game = () => {
           />
         }
       </Flex>
-      <Flex justifyContent="center" alignItems="center" mt="1em" flexDirection="column">
+      <Flex justifyContent="center" alignItems="center" mt="1em" flexDirection="column" color="white">
         {gameState.foundIcon !== sampleIconNumber &&
         <>
-          <Text fontWeight="bold" fontSize="xs">Objective</Text>
-          <Text>FIND THESE ICONS</Text>
+          <Text fontWeight="bold" fontSize="xs" color="pink.300">Hedef</Text>
+          <Text fontWeight="extrabold" fontSize="md" mb="2">BU İKONLARI BUL</Text>
           <Flex flexDirection="row">
             <Icons
               colorIconList={colorIconList}
@@ -102,7 +99,7 @@ const Game = () => {
 
         {gameState.foundIcon === sampleIconNumber &&
         <>
-          <Text fontWeight="bold" color="green.500" fontSize="4xl">CONGRATS!</Text>
+          <Text fontWeight="extrabold" color="green.300" fontSize="4xl" mb="4">TEBRİKLER!</Text>
           <NewGame/>
           <Leaderboard/>
         </>

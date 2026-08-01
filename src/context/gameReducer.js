@@ -70,28 +70,35 @@ export const gameReducer = (state, action) => {
     case SET_DIFFICULTY_LEVEL:
       let iconNumber;
       let iconChangeMSeconds;
+      let totalIcons;
       if (action.data === "1") {
-        iconNumber = 4
-        iconChangeMSeconds = 10000
+        iconNumber = 2;
+        totalIcons = 9;
+        iconChangeMSeconds = 20000;
       } else if (action.data === "2") {
-        iconNumber = 5
-        iconChangeMSeconds = 8000
+        iconNumber = 3;
+        totalIcons = 16;
+        iconChangeMSeconds = 15000;
       } else if (action.data === "3") {
-        iconNumber = 6
-        iconChangeMSeconds = 4000
+        iconNumber = 4;
+        totalIcons = 25;
+        iconChangeMSeconds = 10000;
       } else if (action.data === "4") {
-        iconNumber = 8
-        iconChangeMSeconds = 2000
+        iconNumber = 5;
+        totalIcons = 36;
+        iconChangeMSeconds = 8000;
       } else {
-        iconNumber = 4
-        iconChangeMSeconds = 10000
+        iconNumber = 2;
+        totalIcons = 9;
+        iconChangeMSeconds = 20000;
       }
       return {
         ...state,
         sampleIconNumber: iconNumber,
+        numberOfIcons: totalIcons,
         iconChangeMilliSeconds: iconChangeMSeconds,
         difficultyLevel: action.data
-      }
+      };
     default:
       return state;
   }

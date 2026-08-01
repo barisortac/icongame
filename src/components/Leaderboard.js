@@ -63,30 +63,32 @@ const Leaderboard = () => {
   }, [leaderboard.length])
 
   return (
-    <Flex justifyContent="center" alignItems="center" flexDirection="column">
-      <Text fontWeight="bold">Leaderboard</Text>
+    <Flex justifyContent="center" alignItems="center" flexDirection="column" mt="1.5em">
+      <Text fontWeight="extrabold" fontSize="xl" mb="0.5em" color="pink.300">Liderlik Tablosu</Text>
       {
         leaderboard.length
           ?
           leaderboard.filter(i => i.score < 5000).map((item, idx) => (
             (item.name && item.score) &&
             <Tag
-              backgroundColor={item._id === idOnLeaderboard ? "pink.200" : "teal.200"}
+              key={item._id || idx}
+              backgroundColor={item._id === idOnLeaderboard ? "pink.200" : "blue.700"}
               width="17em"
               display="flex"
-              color="facebook.600"
-              p="5px"
-              m="2px"
+              color={item._id === idOnLeaderboard ? "black" : "white"}
+              p="6px"
+              m="3px"
+              borderRadius="md"
               ref={item._id === idOnLeaderboard ? scrollToLeaderboardRef : null}
             >
-              {idx + 1} - {item.name} - {item.score} {item.current_date ? "- " + item.current_date: ""}
+              {idx + 1} - {item.name} - {item.score} {item.current_date ? "- " + item.current_date : ""}
             </Tag>
             || ''
           ))
           :
           <>
-            <Spinner color="red.500"/>
-            <Text>Loading..</Text>
+            <Spinner color="pink.400" size="lg" mb="2"/>
+            <Text color="blue.200">Yükleniyor...</Text>
           </>
       }
     </Flex>

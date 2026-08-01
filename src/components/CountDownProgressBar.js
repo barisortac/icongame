@@ -8,8 +8,8 @@ const CountDownProgressBar = ({cDown, iconChangeMilliSeconds}) => {
     <>
       <Progress value={(cDown / iconChangeMilliSeconds) * 100 || 0} size="xs" colorScheme="pink" maxW="30em"/>
       <Flex justifyContent="space-between" mr="2px" ml="2px">
-      <Text>
-        Interval:{iconChangeMilliSeconds / 1000 || 0} secs
+      <Text fontSize="xs" color="blue.200">
+        Karıştırma Süresi: {iconChangeMilliSeconds / 1000 || 0} sn
       </Text>
       <Text>
         {getLocalStorageName()}
