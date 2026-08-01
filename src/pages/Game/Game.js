@@ -45,6 +45,7 @@ const Game = () => {
   };
 
   const sampleIconNumber = gameState.sampleIconNumber
+  const sampleIconList = gameState.sampleIconList;
   const numberOfIcons = gameState.numberOfIcons;
   const _iconList = sampleSize(iconList, numberOfIcons);
 
@@ -77,37 +78,6 @@ const Game = () => {
 
   return (
     <>
-      <Flex justifyContent="center" flexDirection="row"
-            wrap="wrap" mt=".25em" width="100%"
-      >
-        {gameState.foundIcon === sampleIconNumber
-          ?
-          <Box position="relative" width="220px" height="220px" display="flex" justifyContent="center" alignItems="center">
-            {showStars ? (
-              <Lottie
-                options={starsOptions}
-                height={200}
-                width={200}
-              />
-            ) : (
-              <Box cursor="pointer" onClick={() => setShowStars(true)}>
-                <Lottie
-                  options={defaultOptions}
-                  height={160}
-                  width={160}
-                />
-              </Box>
-            )}
-          </Box>
-          :
-          <Icons
-            mainPalet={true}
-            numberOfIcons={numberOfIcons}
-            doColorIcon={doColorIcon}
-            colorIconList={colorIconList}
-          />
-        }
-      </Flex>
       <Flex justifyContent="center" alignItems="center" mt="1em" flexDirection="column" color="white">
         {gameState.foundIcon !== sampleIconNumber &&
         <>
@@ -127,6 +97,30 @@ const Game = () => {
         {gameState.foundIcon === sampleIconNumber &&
         <>
           <Text fontWeight="extrabold" color="green.300" fontSize="4xl" mb="2">TEBRİKLER!</Text>
+          
+          <Flex flexDirection="column" alignItems="center" bg="whiteAlpha.100" p="1.25em" borderRadius="2xl" mb="4" border="1px solid" borderColor="whiteAlpha.200" width="100%" maxW="20em">
+            <Text fontSize="xs" fontWeight="bold" color="blue.200" mb="2">Buldun:</Text>
+            <Flex gap="3" wrap="wrap" justifyContent="center">
+              {sampleIconList && sampleIconList.map((i, key) => (
+                <Box
+                  key={key}
+                  fontSize="2xl"
+                  p="2"
+                  bg="whatsapp.500"
+                  borderRadius="full"
+                  boxShadow="0 4px 10px rgba(0, 255, 0, 0.2)"
+                  width="45px"
+                  height="45px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  {i.icon}
+                </Box>
+              ))}
+            </Flex>
+          </Flex>
+
           {!showStars && (
             <Button
               mb="4"
@@ -141,6 +135,38 @@ const Game = () => {
           <NewGame/>
           {/* Liderlik tablosu şimdilik gizlendi */}
         </>
+        }
+      </Flex>
+
+      <Flex justifyContent="center" flexDirection="row"
+            wrap="wrap" mt="1.5em" width="100%"
+      >
+        {gameState.foundIcon === sampleIconNumber
+          ?
+          (showStars ? (
+            <Box width="360px" height="120px" display="flex" justifyContent="center" alignItems="center">
+              <Lottie
+                options={starsOptions}
+                height={120}
+                width={360}
+              />
+            </Box>
+          ) : (
+            <Box width="220px" height="220px" display="flex" justifyContent="center" alignItems="center" cursor="pointer" onClick={() => setShowStars(true)}>
+              <Lottie
+                options={defaultOptions}
+                height={160}
+                width={160}
+              />
+            </Box>
+          ))
+          :
+          <Icons
+            mainPalet={true}
+            numberOfIcons={numberOfIcons}
+            doColorIcon={doColorIcon}
+            colorIconList={colorIconList}
+          />
         }
       </Flex>
     </>
