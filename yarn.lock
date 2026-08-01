@@ -1834,7 +1834,7 @@ popmotion@9.3.1:
     style-value-types "4.1.1"
     tslib "^1.10.0"
 
-postcss@^8.4.43:
+postcss@^8.4.38:
   version "8.5.25"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.5.25.tgz"
   integrity sha512-DTPx3RWSSnWyzLxQnlH0rJP+EW5ekl16ZU4/psbIhA0e53kJfdgaN5vKM+xP7yJtXVu+nfdVFmlgFDEKAe4Pyw==
