@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import {Flex, Text,} from '@chakra-ui/react'
+import {Flex, Text, Box, Button} from '@chakra-ui/react'
 import Icons from "../../components/Icons";
 import iconList from "../../components/IconProvider";
 import {sampleSize} from "lodash";
 import useApp from "../../useApp";
 import Lottie from 'react-lottie';
 import squeezeBunnyAnimation from '../../lotties/Squeeze bunny _(.json';
+import starsAnimation from '../../lotties/5 stars.json';
 import Leaderboard from "../../components/Leaderboard";
 import NewGame from "../../components/NewGame";
 
@@ -19,6 +20,8 @@ const Game = () => {
     actions: {gameActions},
   } = useApp()
 
+  const [showStars, setShowStars] = useState(false);
+
   const initialColor = sampleSize([
     "red", "green", "orange", "pink", "yellow", "teal", "blue", "cyan", "purple", "linkedin", "facebook"
   ], gameState.sampleIconNumber)
@@ -29,6 +32,15 @@ const Game = () => {
     animationData: selectedAnimation,
     rendererSettings: {
       preserveAspectRatio: "xMidYMid slice"
+    }
+  };
+
+  const starsOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: starsAnimation,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid meet"
     }
   };
 
@@ -66,15 +78,27 @@ const Game = () => {
   return (
     <>
       <Flex justifyContent="center" flexDirection="row"
-            wrap="wrap" mt=".25em" maxW="22em"
+            wrap="wrap" mt=".25em" width="100%"
       >
         {gameState.foundIcon === sampleIconNumber
           ?
-          <Lottie
-            options={defaultOptions}
-            height={200}
-            width={200}
-          />
+          <Box position="relative" width="220px" height="220px" display="flex" justifyContent="center" alignItems="center">
+            {showStars ? (
+              <Lottie
+                options={starsOptions}
+                height={200}
+                width={200}
+              />
+            ) : (
+              <Box cursor="pointer" onClick={() => setShowStars(true)}>
+                <Lottie
+                  options={defaultOptions}
+                  height={160}
+                  width={160}
+                />
+              </Box>
+            )}
+          </Box>
           :
           <Icons
             mainPalet={true}
@@ -99,9 +123,20 @@ const Game = () => {
 
         {gameState.foundIcon === sampleIconNumber &&
         <>
-          <Text fontWeight="extrabold" color="green.300" fontSize="4xl" mb="4">TEBRİKLER!</Text>
+          <Text fontWeight="extrabold" color="green.300" fontSize="4xl" mb="2">TEBRİKLER!</Text>
+          {!showStars && (
+            <Button
+              mb="4"
+              colorScheme="pink"
+              size="md"
+              fontWeight="bold"
+              onClick={() => setShowStars(true)}
+            >
+              Tıkla 🌟
+            </Button>
+          )}
           <NewGame/>
-          <Leaderboard/>
+          {/* Liderlik tablosu şimdilik gizlendi */}
         </>
         }
       </Flex>
