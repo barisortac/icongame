@@ -56,7 +56,7 @@ const Login = () => {
         <RadioGroup onChange={setDifficulty} defaultValue="1" value={difficulty} mt="1em">
           <Stack direction="row" spacing="4">
             <Radio value="1" colorScheme="pink">
-              <Tooltip label="9 emoji (3x3) | 2 hedef | 20 sn karıştırma" fontSize="md">
+              <Tooltip label="9 emoji (3x3) | 1 hedef | 20 sn karıştırma" fontSize="md">
                 Kolay
               </Tooltip>
             </Radio>
@@ -66,12 +66,12 @@ const Login = () => {
               </Tooltip>
             </Radio>
             <Radio value="3" colorScheme="pink">
-              <Tooltip label="25 emoji (5x5) | 4 hedef | 10 sn karıştırma" fontSize="md">
+              <Tooltip label="25 emoji (5x5) | 5 hedef | 10 sn karıştırma" fontSize="md">
                 Zor
               </Tooltip>
             </Radio>
             <Radio value="4" colorScheme="pink">
-              <Tooltip label="36 emoji (6x6) | 5 hedef | 8 sn karıştırma" fontSize="md">
+              <Tooltip label="36 emoji (6x6) | 10 hedef | 8 sn karıştırma" fontSize="md">
                 İmkansız
               </Tooltip>
             </Radio>

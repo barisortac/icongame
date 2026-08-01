@@ -72,7 +72,7 @@ export const gameReducer = (state, action) => {
       let iconChangeMSeconds;
       let totalIcons;
       if (action.data === "1") {
-        iconNumber = 2;
+        iconNumber = 1;
         totalIcons = 9;
         iconChangeMSeconds = 20000;
       } else if (action.data === "2") {
@@ -80,15 +80,15 @@ export const gameReducer = (state, action) => {
         totalIcons = 16;
         iconChangeMSeconds = 15000;
       } else if (action.data === "3") {
-        iconNumber = 4;
+        iconNumber = 5;
         totalIcons = 25;
         iconChangeMSeconds = 10000;
       } else if (action.data === "4") {
-        iconNumber = 5;
+        iconNumber = 10;
         totalIcons = 36;
         iconChangeMSeconds = 8000;
       } else {
-        iconNumber = 2;
+        iconNumber = 1;
         totalIcons = 9;
         iconChangeMSeconds = 20000;
       }

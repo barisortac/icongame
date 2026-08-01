@@ -111,7 +111,10 @@ const Game = () => {
       <Flex justifyContent="center" alignItems="center" mt="1em" flexDirection="column" color="white">
         {gameState.foundIcon !== sampleIconNumber &&
         <>
-          <Text fontWeight="bold" fontSize="xs" color="pink.300">Hedef</Text>
+          <Text fontWeight="extrabold" fontSize="md" color="pink.300" mb="2">
+            Bulunan Emojiler: {gameState.foundIcon} / {sampleIconNumber} 🎯
+          </Text>
+          <Text fontWeight="bold" fontSize="xs" color="blue.200">Hedef</Text>
           <Text fontWeight="extrabold" fontSize="md" mb="2">BU İKONLARI BUL</Text>
           <Flex flexDirection="row">
             <Icons
