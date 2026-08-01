@@ -1,34 +1,23 @@
 import React from 'react'
-import {Flex, Link, Text} from '@chakra-ui/react'
+import {Flex, Link, Text, Box} from '@chakra-ui/react'
 import {Divider} from "@chakra-ui/layout";
 
 const Info = () => {
   return (
-    <Flex>
-      <Flex flexDirection="column" mt="4em" fontSize="l">
-        <Divider mt="1em" mb="1em"/>
-        <Text fontWeight="bold" display="block" fontSize="xl">
-          What is this?
-        </Text>
-        <Text>
-          It is a proof-of-concept game that includes <b>ReactJS, ChakraUI, React Router, MongoDB,
-          Express, ContextAPI, Reducer, and Vercel</b> for the deployment.
-        </Text>
-        <Text fontWeight="bold" fontSize="xl">
-          What is the objective?
-        </Text>
-        <Text>
-          Find the sampled icons in the icon pool. You will get a score according to
-          your finish time & difficulty level.
-        </Text>
-        <Text fontWeight="bold" fontSize="xl">
-          Can I see your code?
-        </Text>
-        <Text>
-          Yep. I published the repositories for both backend & frontend. Here are the links:
-        </Text>
-        <Link href="https://github.com/barisortac/icongame">https://github.com/barisortac/icongame</Link>
-        <Link href="https://github.com/barisortac/icongameserver">https://github.com/barisortac/icongameserver</Link>
+    <Flex width="100%" justifyContent="center">
+      <Flex flexDirection="column" mt="3em" fontSize="sm" maxW="24em" textAlign="center" alignItems="center">
+        <Divider mt="1em" mb="1.5em" borderColor="whiteAlpha.300" />
+        <Box bg="whiteAlpha.100" p="1.5em" borderRadius="lg" width="100%">
+          <Text fontWeight="extrabold" fontSize="md" mb="0.5em" color="pink.300">
+            Zeka Küpü Nedir? 🧠
+          </Text>
+          <Text mb="1em">
+            Görsel hafızanı zorlayacak eğlenceli bir test! Ekrandaki ikonları aklında tut, süre bitmeden onları bul ve en yüksek puanı kap!
+          </Text>
+          <Text fontWeight="bold" fontSize="sm" color="blue.200">
+            Ekin Yazıcı ve Barış Ortaç tarafından özenle geliştirildi.
+          </Text>
+        </Box>
       </Flex>
     </Flex>
   )
